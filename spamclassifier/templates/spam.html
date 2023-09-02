@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+</head>
+<body style="background-color: whitesmoke; ">
+      <div class="navbar navbar-expand-sm bg-dark" >
+           <a href="#" style="text-decoration: none; color: whitesmoke; position: relative; left: 10%; font-size: 30px;" class="navabr-brand">Spam Detector</a>
+
+      </div>
+      <div class="container-flex" style="margin-top: 3%;">
+            <div class="container">
+                <form method="POST" action="check">
+                    {% csrf_token %}
+                    <label for="exampleFormControlTextarea1">Enter Sms/Email</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="sms" rows="12" style="width: 65%;" required></textarea>
+                    <button type="submit" class="btn btn-primary" style="background-color: black; color: whitesmoke; margin-top: 2%;">Check</button>
+                </form>
+            </div> 
+    </div>
+
+                <!-- <div class="form-group">
+                </div> -->
+
+            
+     
+      {% if req_method == "POST" %}
+      <div class="alert alert-dark" role="alert" style="width: 55%; margin-left: 7%; margin-top: 1%;">
+        {{ res }}
+      </div>
+      {% endif %}
+</body>
+</html>
